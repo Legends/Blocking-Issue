@@ -2,4 +2,4 @@
 
 Server spawns client process
 
-The issue happens in client.cs (line 38) on first read using ` await JsonSerializer.DeserializeAsync<T>(pipe)`
+The issue happens in client.cs (line 40) on first read using ` await JsonSerializer.DeserializeAsync<T>(pipe)`

@@ -39,7 +39,8 @@ namespace Shared
         {
             //var bt = await ReadMessageAsync(pipe);
             //var obj = JsonSerializer.Deserialize<T>(bt);
-            //return await Task.FromResult(obj);
+            //return await Task.FromResult(obj);  // works!
+
             //Console.WriteLine("CALLING  JsonSerializer.DeserializeAsync<T>(pipe) ");
             //Debugger.Launch();
             //Debugger.Break();
@@ -49,7 +50,7 @@ namespace Shared
 
         public static async Task WriteMessageAsyncAsObject<T>(PipeStream pipe, T obj)
         {
-            await JsonSerializer.SerializeAsync<T>(pipe, obj);            
+            await JsonSerializer.SerializeAsync<T>(pipe, obj);
         }
     }
 
