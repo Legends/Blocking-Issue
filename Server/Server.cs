@@ -28,17 +28,19 @@ namespace Server
 
                 #region PIPE MESSAGE TRANSFER
 
-                // DATA READ AS STRING
-                Console.WriteLine(await Piper.ReadMessageAsyncAsString(server));
+                #region String transfer
+                //// DATA READ AS STRING
+                //Console.WriteLine(await Piper.ReadMessageAsyncAsString(server));
 
-                // DATA WRITTEN AS STRING
-                await Piper.WriteMessageAsyncAsString(server, "Message from Server: 1st msg");
+                //// DATA WRITTEN AS STRING
+                //await Piper.WriteMessageAsyncAsString(server, "Message from Server: 1st msg");
 
-                // DATA READ AS STRING
-                Console.WriteLine(await Piper.ReadMessageAsyncAsString(server));
+                //// DATA READ AS STRING
+                //Console.WriteLine(await Piper.ReadMessageAsyncAsString(server));
 
-                // DATA WRITTEN AS STRING
-                await Piper.WriteMessageAsyncAsString(server, "Message from Server: 2nd msg");
+                //// DATA WRITTEN AS STRING
+                //await Piper.WriteMessageAsyncAsString(server, "Message from Server: 2nd msg");
+                #endregion
 
                 // DATA SENT AS OBJECT
                 var obj = new SomeObject() { Property1 = "SomeValueFromServer", Property2 = 20 };

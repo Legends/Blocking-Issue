@@ -14,25 +14,27 @@ namespace Client
                 Console.WriteLine("I AM THE CLIENT");
 
                 var pipeName = args[0];
-                Console.WriteLine(pipeName);
-
+            
                 using var client = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
                 await client.ConnectAsync();
+
                 client.ReadMode = PipeTransmissionMode.Message;
 
                 #region PIPE MESSAGE TRANSFER
 
-                // DATA WRITTEN AS STRING
-                await Piper.WriteMessageAsyncAsString(client, "Message from Client: 1st msg!");
+                #region String transfer
+                //// DATA WRITTEN AS STRING
+                //await Piper.WriteMessageAsyncAsString(client, "Message from Client: 1st msg!");
 
-                // DATA READ AS STRING
-                Console.WriteLine(await Piper.ReadMessageAsyncAsString(client));
+                //// DATA READ AS STRING
+                //Console.WriteLine(await Piper.ReadMessageAsyncAsString(client));
 
-                // DATA WRITTEN AS STRING
-                await Piper.WriteMessageAsyncAsString(client, "Message from Client: 2nd msg!");
+                //// DATA WRITTEN AS STRING
+                //await Piper.WriteMessageAsyncAsString(client, "Message from Client: 2nd msg!");
 
-                // DATA READ AS STRING
-                Console.WriteLine(await Piper.ReadMessageAsyncAsString(client));
+                //// DATA READ AS STRING
+                //Console.WriteLine(await Piper.ReadMessageAsyncAsString(client));
+                #endregion
 
                 // DATA READ AS OBJECT
                 var obj = await Piper.ReadMessageAsyncAsObject<SomeObject>(client);
