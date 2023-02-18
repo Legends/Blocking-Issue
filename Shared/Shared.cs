@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO.Pipes;
+﻿using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
 
@@ -14,8 +13,6 @@ namespace Shared
 
             do
             {
-                // pipe reads from stream and writes into buffer
-                // ms reads from buffer into own memory stream
                 await ms.WriteAsync(buffer, 0, await pipe.ReadAsync(buffer, 0, buffer.Length));
             }
             while (!pipe.IsMessageComplete);

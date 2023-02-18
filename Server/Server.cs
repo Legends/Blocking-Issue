@@ -1,13 +1,12 @@
 ﻿using Shared;
 using System.Diagnostics;
 using System.IO.Pipes;
-using System.Reflection;
-using System.Text;
 
 namespace Server
 {
     internal class Program
     {
+        const string pipeName = "hostpipe";
         static async Task Main(string[] args)
         {
             try
@@ -17,8 +16,7 @@ namespace Server
                 var t = new Thread(CallClient);
                 t.Start();
 
-                using var server = new NamedPipeServerStream(
-                                                            "hostpipe",
+                using var server = new NamedPipeServerStream(pipeName,
                                                             PipeDirection.InOut,
                                                             NamedPipeServerStream.MaxAllowedServerInstances,
                                                             PipeTransmissionMode.Message,
@@ -69,7 +67,7 @@ namespace Server
 
             var psi = new ProcessStartInfo()
             {
-                Arguments = "hostpipe",
+                Arguments = pipeName,
                 UseShellExecute = true,
                 FileName = @"..\..\..\..\Client\bin\Debug\net7.0\Client.exe"
             };
